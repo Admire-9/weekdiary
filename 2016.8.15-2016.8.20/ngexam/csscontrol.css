@@ -1,0 +1,9 @@
+p {
+    transition: all 1s;
+}
+.text-red {
+    color: red;
+}
+.text-green {
+    color: green;
+}

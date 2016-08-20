@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myServ">
+<head>
+    <meta charset="UTF-8">
+    <title>myServ</title>
+</head>
+<body>
+    <div ng-controller="ServiceController">
+        <label>用户名</label>
+        <input type="text" name="text" ng-model="username" placeholder="请输入用户名"/>
+        <pre ng-show="username">
+            {{users}}
+        </pre>
+    </div>
+</body>
+<script src="angular.min.js"></script>
+<script type="text/javascript">
+    var myServ = angular.module('myServ', []);
+    myServ.factory('userListService', ['$http', function($http){
+        var doRequest = function(username,path){
+            return $http({
+                method:'GRT',
+                url : 'data.json'
+            });
+        };
+        return {
+            userList : function(username){
+                return doRequest(username,'userList');
+            }
+        };
+    }]);
+    myServ.controller('ServiceController', ['$scope','$timeout','userListService', function($scope,$timeout,userListService){
+        var timeout;
+        $scope.$watch('username', function(newUserName) {
+            if (newUserName==="111") {
+                if (timeout) {
+                    $timeout.cancel(timeout);
+                }
+                timeout = $timeout(function(){
+                    userListService.userList(newUserName)
+                        .success(function (data,status) {
+                            $scope.users = data;
+                        });
+                },350);
+            }
+        });
+    }])
+</script>
+</html>

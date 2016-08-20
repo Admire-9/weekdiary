@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+<script src="angular.min.js"></script>
+<style type="text/css" media="screen">
+div{
+    padding: 6px;
+}
+div.container {
+    border: 1px solid black;
+}
+div.my-info {
+    border: 1px solid blue;
+}
+div.my-directive{
+    border: 1px solid green;
+}  
+</style>
+</head>
+<body >
+  
+
+  <!-- <div ng-app="myApp"
+       ng-init="someProperty = 'some data'"></div>
+  <div ng-init="siblingProperty = 'more data'">
+    Inside Div Two: {{ aThirdProperty }}
+    <div ng-init="aThirdProperty = 'data for 3rd property'"
+         ng-controller="SomeCtrl">
+      Inside Div Three: {{ aThirdProperty }}
+      <div  ng-controller="SecondCtrl">
+        Inside Div Four: {{ aThirdProperty }}
+        <br>
+        Outside myDirective: {{ myProperty }}
+        <div my-directive ng-init="myProperty = 'wow, this is cool'">
+          Inside myDirective: {{ myProperty }}
+        <div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  <script>
+    angular.module('myApp', [])
+    .controller('SomeCtrl', function($scope) {
+      // we can leave it empty, it just needs to be defined
+    })
+    .controller('SecondCtrl', function($scope) {
+      // also can be empty
+    })
+    .directive('myDirective', function() {
+      return {
+        restrict: 'A',
+        scope: true
+      }
+    })
+  </script> -->
+
+  <!--  Outside myDirective: {{ myProperty }}
+    <div my-directive ng-init="myProperty = 'wow, this is cool'">
+   Inside myDirective: {{ myProperty }}
+    <div>
+  
+    <script>
+   angular.module('myApp', [])
+   .controller('MainController', function($scope) {})
+   .directive('myDirective', function() {
+     return {
+       restrict: 'A',
+       scope: true,
+  
+       template: '<div>Inside myDirective {{ myProperty }}</div>'
+     };
+   })
+    </script> -->
+    <div ng-app="MyApp">
+    <div class="container" ng-controller="MyController">
+        <div class="my-info">我的名字是：<span ng-bind="name"></span>
+
+            <br/>我的年龄是：<span ng-bind="age"></span>
+
+        </div>
+        <div class="my-directive" my-directive my-name="{{name}}" age="age"  change-my-age="changeAge()"></div>
+    </div>
+  </div>
+    <script type="text/javascript">
+        angular.module("MyApp", [])
+          .controller("MyController", function ($scope) {
+          $scope.name = "dreamapple";
+          $scope.age = 20;
+          $scope.changeMyAge = function () {
+              $scope.age = 0;
+          }
+      })
+
+      .directive("myDirective", function () {
+      var obj = {
+          restrict: "AE",
+          scope: {
+            name: '@myName',
+            age: '=',
+            changeAge: '&changeMyAge'
+          },
+          replace: true,
+          template: "<div class='my-directive'>" +
+              "<h3>下面部分是我们创建的指令生成的</h3>" +
+              "我的名字是：<span ng-bind='name'></span><br/>" +
+              "我的年龄是：<span ng-bind='age'></span><br/>" +
+              "在这里修改名字：<input type='text' ng-model='name'>"+
+              " </div>"
+      }
+      return obj;
+      });
+    </script>
+</body>
+
+</html>

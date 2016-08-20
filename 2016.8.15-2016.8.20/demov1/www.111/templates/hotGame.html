@@ -1,0 +1,11 @@
+<ion-view view-title="">
+  <ion-content class="padding">
+  <ion-slide-box does-continue="true" delegate-handle="image-viewer1" auto-play="true" show-pager="true" slide-interval="600">
+    <ion-slide ng-repeat="slide in banner" style="width:100%;" on-slide-changed="slideHasChanged($index)">
+      <div class="box">
+        <img ng-src="{{slide}}" style="height:100%;width:100%;position: relative;">
+      </div>
+    </ion-slide>
+  </ion-slide-box>
+  </ion-content>
+</ion-view>

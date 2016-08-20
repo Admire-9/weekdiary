@@ -1,0 +1,41 @@
+<ion-view view-title="">
+  <ion-content class="padding">
+    <ion-slide-box does-continue="true" delegate-handle="image-viewer1" auto-play="true" show-pager="true" slide-interval="600">
+      <ion-slide ng-repeat="slide in banner" style="width:100%;" on-slide-changed="slideHasChanged($index)">
+        <div class="box">
+          <img ng-src="{{slide}}" style="height:100%;width:100%;position: relative;">
+        </div>
+      </ion-slide>
+    </ion-slide-box>
+  </ion-content>
+
+  <ion-content has-subheader="false" class="game-item-list">
+    <ion-list id="list-scroll">
+      <ion-item ng-repeat="item in items" class="game-item" >
+        <img  ng-src={{item.icon}} alt="游戏Icon">
+      <div class="game-detail">
+      <h2 >
+        <span  ng-bind="item.name"></span>
+        <em>
+          <img ng-if="item.mark !==0 " ng-src="http://www.lbwan.com/img/newHome/{{item.mark}}.png" alt="萝卜玩" class="hot-icon" />
+        </em>
+      </h2>
+      <p style="height:1.5rem;margin: 0.6rem 0 .3rem;">
+        <img style="width:1rem;height:1rem" ng-src="{{getStarSrc(1,item.star)}}" alt="" >
+        <img style="width:1rem;height:1rem" ng-src="{{getStarSrc(2,item.star)}}" alt="">
+        <img style="width:1rem;height:1rem" ng-src="{{getStarSrc(3,item.star)}}" alt="">
+        <img style="width:1rem;height:1rem" ng-src="{{getStarSrc(4,item.star)}}" alt="">
+        <img style="width:1rem;height:1rem" ng-src="{{getStarSrc(5,item.star)}}" alt="">
+      </p>
+      <p style="color: #818181 !important;">
+        <b>在线：</b>
+        <strong ng-bind="item.onlineNum" style="color: #F34343"></strong>
+        <b>人气：</b>
+        <strong ng-bind="item.fakePlayNum"></strong>
+      </p>
+      </div>
+      <button class="button button-positive playButton" ui-sref="tab.chats">PLAY</button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

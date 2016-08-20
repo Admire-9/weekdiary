@@ -1,0 +1,42 @@
+/* Empty. Add your own CSS if you like */
+
+.logo {
+    height: 40px;
+}
+.game-item img {
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+    float: left;
+    margin-right: 2%;
+}
+.game-item .game-detail {
+    width: 45%;
+    float: left;
+}
+.game-item .hot-icon {
+    width: 30px;
+    height: 20px;
+}
+.game-item-list {
+    margin-top: 140px;
+}
+.playButton {
+    width: 90px;
+    height: 40px;
+    border-radius: .5rem !important;
+    height: 3rem !important;
+    padding: 0 1rem !important;
+    background: #ff7a00 !important;
+    color: #fff;
+    line-height: 3rem !important;
+    font-size: 1.3rem !important;
+    display: inline-block !important;
+    margin-top: 21px;
+    text-align: center !important;
+    text-decoration: none !important;
+    float: right !important;
+}
+.playButton:hover {
+    background: rgb(166, 79, 1);
+}

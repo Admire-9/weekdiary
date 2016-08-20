@@ -1,0 +1,17 @@
+/*tabs条带风格自定义*/
+.tabs {
+  color: #FF7A01; !important;}
+.tabs .tab-title{
+  font-family:"微软雅黑" !important;
+}
+.tabs-striped .tab-item.tab-item-active, .tabs-striped .tab-item.active, .tabs-striped .tab-item.activated {
+  margin-top: -2px;
+  border-style: solid;
+  border-width: 2px 0 0 0;
+  border-color: #FF7A01; }
+/*hot_banner*/
+.hot_banner {
+  /*position: relative;*/
+  /*height: 100%;*/
+  /*width:100%;*/
+}
